@@ -8,6 +8,10 @@ class GardensController < ApplicationController
 
   # GET /gardens/1 or /gardens/1.json
   def show
+    # Display the garden's plants
+    @plants = @garden.plants
+    # Create a new plant Instance
+    @plant = Plant.new
   end
 
   # GET /gardens/new

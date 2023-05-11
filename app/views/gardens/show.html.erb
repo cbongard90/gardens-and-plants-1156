@@ -3,3 +3,23 @@
     <h1><%= @garden.name %></h1>
   </div>
 </div>
+<div class="container">
+  <h2>You currently have <%= pluralize(@plants.count, 'plant') %></h2>
+  <div class="row">
+    <% @plants.each do |plant| %>
+      <div class="card-category">
+        <%= plant.name %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <h3>Add a plant</h3>
+      <%= simple_form_for [@garden, @plant] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :image_url %>
+        <%= f.submit 'Add', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
