@@ -7,8 +7,9 @@
   <h2>You currently have <%= pluralize(@plants.count, 'plant') %></h2>
   <div class="row">
     <% @plants.each do |plant| %>
-      <div class="card-category">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= plant.image_url %>')">
         <%= plant.name %>
+        <%= link_to '+', plant_path(plant), data:{turbo_method: :delete, turbo_confirm: "Are you sure you want to delete #{plant.name}?"}, class:'card-remove-link' %>
       </div>
     <% end %>
   </div>
@@ -23,3 +24,4 @@
     </div>
   </div>
 </div>
+<%= link_to 'Go Back', root_path %>
